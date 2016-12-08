@@ -411,15 +411,20 @@ Custom property | Description | Default
        *
        */
       _moveManual: function() {
+        var dotElems = this.$.container.querySelectorAll('.slider__dot');
+
+        if (!dotElems.length) {
+          return;
+        }
+
         var this$ = this;
-        var dotElems = this.$.container.querySelectorAll('.slider__dot'),
-          i;
-        for (i = 0; i < this.totalSlides; ++i) {
+        for (var i = 0; i < this.totalSlides; ++i) {
           dotElems[i].addEventListener('click', function(e) {
             this$.movePos(e.target.getAttribute('data-pos'));
           });
         };
-        this._dotStyles = window.getComputedStyle(dotElems[0]);
+
+          this._dotStyles = window.getComputedStyle(dotElems[0]);
       },
       /**
        * Method to reinitialise
